@@ -1,2 +1,6 @@
+!pip install flask
+!pip install flask-ngrok
+!pip3 install pyngrok
+!mkdir ./sample_data/web_serv
+!ngrok authoken 
 
-l
