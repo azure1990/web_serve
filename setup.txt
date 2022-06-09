@@ -1,6 +1,15 @@
+#instalar Flask
 !pip install flask
+
+#instalar ngrok para poder usar localhost afuera de colab
 !pip install flask-ngrok
+
+#instalar pynrok para configuar el token de ngrok
 !pip3 install pyngrok
+
+#crear folders
 !mkdir ./sample_data/web_serv
-!ngrok authoken 
+
+#setear el token de ngron (este command solo esta con pyngrok)
+!ngrok authoken token_aqui
 
