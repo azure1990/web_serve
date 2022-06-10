@@ -8,7 +8,7 @@
 !pip3 install pyngrok
 
 #crear folders
-!mkdir ./sample_data/web_serv
+!mkdir ./alpha_app
 
 #setear el token de ngron (este command solo esta con pyngrok)
 !ngrok authoken token_aqui
