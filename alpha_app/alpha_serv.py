@@ -6,6 +6,16 @@ run_with_ngrok(alpha_app)
 
 @alpha_app.route('/')
 def hello():
-  return "Holix mundo"
+  return render_template("index.html")
+
+@alpha_app.route('/index')
+def hello():
+  return render_template("index.html")
+
+@alpha_app.route('/index.html')
+def hello():
+  return render_template("index.html")
+
+
 
 alpha_app.run()
