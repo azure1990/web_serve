@@ -8,7 +8,10 @@
 !pip3 install pyngrok
 
 #crear folders
-!mkdir ./alpha_apphttps://github.com/azure1990/web_serve/blob/main/setup.txt
+!mkdir ./alpha_app
+!mkdir ./alpha_app/templates
+!mkdir ./alpha_app/static
+!mkdir ./alpha_app/static/images
 !cd ./alpha_app
 
 #setear el token de ngron (este command solo esta con pyngrok)
