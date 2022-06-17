@@ -1,0 +1,7 @@
+Crear un sitio que permita:
+
+1- elejir un color de un radio button (opciones: rojo, azul, amarillo, verde, gris) 
+2- Que use un valor por defecto de "oro".
+3- Permitir elejir un acompanamiento (Arroz, papas, ensaldas, quesadillas, soda) o varios.
+4- Con un valor defecto de "papas".
+5- Debe presentar las opciones elegidas en una nueva pagina.
