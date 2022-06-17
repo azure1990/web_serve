@@ -39,3 +39,7 @@ Crear una papgina que permita:
 Crear una pagina que permita:
 
 1- Crear un usuario con email y contrasena y user.
+
+Crear una pagina que:
+
+1- Llame los 10 productos de la tienda pero los muestre de 2 en 2 (paginacion).
