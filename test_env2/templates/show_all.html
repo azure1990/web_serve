@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang = "en">
+   <head></head>
+   <body>
+      
+      <h3>
+         <a href = "{{ url_for('show_all') }}">Libros - Flask SQLAlchemy example</a>
+      </h3>
+      
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}<br>
+      {%- endfor %}
+		
+      <h3>Students (<a href = "{{ url_for('new') }}">Agregar Libro</a>)</h3>
+
+      
+      {% if False%}
+         <h3> Todo es verdad </h3>
+      {% endif %}
+
+      
+
+      <h3>{{b}}</h3>
+      <table>
+         <thead>
+            <tr>
+               <th>Name</th>
+               <th>Author</th>
+               <th>Number of Pages</th>               
+            </tr>
+         </thead>
+         
+         <tbody>
+            {% for libro in libros %}
+               <tr>
+                  <td>{{ libro.name }}</td>
+                  <td>{{ libro.author }}</td>
+                  <td>{{ libro.number_pgs }}</td>                  
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      
+   </body>
+</html>
