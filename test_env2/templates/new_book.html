@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+   <body>
+   
+      <h3>Libros - Flask SQLAlchemy example</h3>
+      <hr/>
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+      
+      <form action = "{{ request.path }}" method = "post">
+         <label for = "name">Name</label><br>
+         <input type = "text" name = "name" placeholder = "Name" /><br>
+         
+        <label for = "author">City</label><br>
+         <input type = "text" name = "author" placeholder = "Author" /><br>
+        
+        <label for = "number_pgs">addr</label><br>
+         <input type = "text" name = "number_pgs" placeholder = "Number of pages" /><br>
+        
+        <input type = "submit" value = "Submit" />
+      </form>
+      
+   </body>
+</html>
