@@ -1,0 +1,45 @@
+Crear un sitio que permita:
+
+1- elejir un color de un radio button (opciones: rojo, azul, amarillo, verde, gris) 
+2- Que use un valor por defecto de "oro".
+3- Permitir elejir un acompanamiento (Arroz, papas, ensaldas, quesadillas, soda) o varios.
+4- Con un valor defecto de "papas".
+5- Debe presentar las opciones elegidas en una nueva pagina.
+6- Y continuar luego a una pagina siguiente llena del acompanante o acompanantes que el haya elegido mas un fondo del color elejido pero usando variables de sesion (cookies). 
+
+Crear un sitio que permita:
+
+1- Capturar 3 valores desde un formulario
+2- Agregar los valores a una base de datos
+
+Crear un sitio que permita:
+
+1- Tener una list de 10 productos desde una base de datos.
+2- Agrear los productos a una canasta
+3- Ver individualmente cada producto y agregar desde esa vista
+4- La canasta debe ser visible en todo momento
+
+Mejorar el sitio anterior y permitir:
+
+1- Elegir cuantos productos agregar 
+2- Eliminar o disminuir productos de las canasta
+
+Crear un sitio que permita:
+
+1- Crear un generador.
+2- Obtener el valor siguiente cada que se de click en el boton siguiente. 
+
+Crear una papgina que permita:
+
+1- Authenticar a una base de datos
+2- Mostrar la pagina principal si se autentica
+3- Mostrar la misma pagina pero distinto si no se autentica.
+4- Logout de la pagina. 
+
+Crear una pagina que permita:
+
+1- Crear un usuario con email y contrasena y user.
+
+Crear una pagina que:
+
+1- Llame los 10 productos de la tienda pero los muestre de 2 en 2 (paginacion).
