@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head></head>
+   <body>
+      
+      <h3>
+         <a href = "{{ url_for('mostrar_amos') }}">Amos y Perros - Flask SQLAlchemy example</a>
+      </h3>
+      
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}<br>
+      {%- endfor %}
+		
+        <table>
+         <thead>
+            <tr>
+               <th>Nombre</th>
+               <th>Edad</th>               
+            </tr>
+         </thead>
+         
+         <tbody>
+            {% for perro in perros %}
+               <tr>
+                  <td>{{perro.nombre}}</td>
+                  <td>{{perro.edad}} Anos</td>
+                  <td><a href="">eliminar</a></td>
+                  <td><a href="">actualizar</a></td>                  
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      
+   </body>
+</html>
