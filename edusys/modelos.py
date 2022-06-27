@@ -1,4 +1,3 @@
-
 db = SQLAlchemy(app)
 
 #Crear las helper tables:
@@ -56,3 +55,5 @@ class maestro(db.Model):
   email = db.Column(db.String(150))
   encargado_cursos = db.relationship('curso', backref = 'maestro', lazy = true)
   materias = db.relationship('materia', backref = 'maestro', lazy = true)
+
+  

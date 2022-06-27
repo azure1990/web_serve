@@ -1,4 +1,3 @@
-
 @d_app.route('/')
 def view_index():
   return render_template('index.html')
