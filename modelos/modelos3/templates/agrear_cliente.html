@@ -12,7 +12,7 @@
          </div>
       {%- endfor %}
       
-      <form action = "{{url_for('agrear_cliente', comedor = comedor.id)}}" method = "post">
+      <form action = "{{url_for('agrear_cliente', comedor_id = comedor.id)}}" method = "post">
 
          <label for = "nombre">Nombre</label><br>
          <input type = "text" name = "nombre" placeholder = "Nombre" /><br>
