@@ -3,7 +3,7 @@
 <html>
    <body>
    
-      <a href = "{{ url_for('clientes') }}">clientes - Flask SQLAlchemy example</a>
+      <a href = "{{ url_for('clientes', comedorid = comedor.id) }}">clientes - Flask SQLAlchemy example</a>
       <hr/>
       
       {%- for category, message in get_flashed_messages(with_categories = true) %}
