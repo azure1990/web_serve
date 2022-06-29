@@ -36,7 +36,7 @@ class Comedor(db.Model):
         #backref=db.backref('comedores', lazy=True))
 
   	def __init__(self, nombre):
-
+		
   		self.nombre = nombre  		
 
 		
@@ -45,11 +45,11 @@ class Comedor(db.Model):
 
 @app.route('/')
 def mostrar_comedores():
-  	return render_template('comedores.html', amos = Comedor.query.all())
+  	return render_template('comedores.html', comedores = Comedor.query.all())
 
 @app.route('/')
 def mostrar_comensales():
-  	return render_template('comensales.html', amos = Comensal.query.all())
+  	return render_template('comensales.html', comensales = Comensal.query.all())
 
 
 @app.route('/nuevo_comedor', methods=['GET', 'POST'])
