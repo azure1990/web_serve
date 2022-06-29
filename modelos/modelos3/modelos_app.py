@@ -82,14 +82,14 @@ def nuevo_comensal():
 			#return request.form['nombre']
 	return render_template('crear_comensal.html')
 
-@app.route('/clientes/<int:comedor>')
-def clientes(comedor):
-	return render_template('clientes.html', comensales = Comedor.query.filter_by(comedor_id = comedor).comensales)
+@app.route('/clientes/<int:comedorid>')
+def clientes(comedorid):
+	return render_template('clientes.html', comensales = Comedor.query.filter_by(comedor_id = comedorid).comensales)
 			       
 
-@app.route('/favoritos/<int:comemsal>')
-def favoritos(comensal):
-	return render_template('favoritos.html', comedores = Comensal.query.filter_by(comedor_id = comensal).comedores)
+@app.route('/favoritos/<int:comemsalid>')
+def favoritos(comensalid):
+	return render_template('favoritos.html', comedores = Comensal.query.filter_by(comensal_id = comensalid).comedores)
 
 
 @app.route('/agregar_cliente/<int:comedor_id>')
