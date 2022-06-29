@@ -11,11 +11,19 @@ app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///losmodelos3.sqlite3'
 app.secret_key = "0256ac1229d70c6056e9ca7d40a014ae4ff730cac62ba81f"
 db = SQLAlchemy(app)
 
+
+tags = db.Table('clientes',
+    db.Column('comensal_id', db.Integer, db.ForeignKey('comensal.id'), primary_key=True),
+    db.Column('comedor_id', db.Integer, db.ForeignKey('comedor.id'), primary_key=True)
+)
+
+
 class Comensal(db.Model):
 
 	id = db.Column('id', db.Integer, primary_key = True)
 	nombre = db.Column(db.String(100))
-	comedores = 
+	comedores = db.relationship('Comedor', secondary=tags, lazy='subquery',
+        backref=db.backref('comensales', lazy=True))
 
 	def __init__(self, nombre):
 		self.nombre = nombre
@@ -24,13 +32,16 @@ class Comedor(db.Model):
   
   	id = db.Column('id', db.Integer, primary_key = True, unique = True)
   	nombre = db.Column(db.String(100))
-  	comensales =
+  	comensales = db.relationship('Comensal', secondary=tags, lazy='subquery',
+        backref=db.backref('comedores', lazy=True))
 
   	def __init__(self, nombre):
 
   		self.nombre = nombre  		
-	
 
+		
+		
+#db.create_all()
 
 @app.route('/')
 def mostrar_comedores():
