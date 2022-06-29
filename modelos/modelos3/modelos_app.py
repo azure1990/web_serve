@@ -77,7 +77,7 @@ def nuevo_comensal():
 			db.session.add(comedor)
 			db.session.commit()
 			flash('Comensal creado')
-			return redirect('/')  
+			return redirect('/comensales')  
 			#print(request.form['nombre'])
 			#return request.form['nombre']
 	return render_template('crear_comensal.html')
