@@ -84,9 +84,9 @@ def nuevo_comensal():
 
 @app.route('/clientes/<int:comedor>')
 def clientes(comedor):
-	return render_template('clientes.html', comensales = Comedor.query.filter_by(comedor_id = comedor).comensales
+	return render_template('clientes.html', comensales = Comedor.query.filter_by(comedor_id = comedor).comensales)
 			       
 
 @app.route('/favoritos/<int:comemsal>')
 def favoritos(comensal):
-	return render_template('favoritos.html', comedores = Comensal.query.filter_by(comedor_id = comensal).comedores			       
+	return render_template('favoritos.html', comedores = Comensal.query.filter_by(comedor_id = comensal).comedores)
