@@ -22,7 +22,7 @@ class Comensal(db.Model):
 
 	id = db.Column('id', db.Integer, primary_key = True)
 	nombre = db.Column(db.String(100))
-	comedores = db.relationship('Comedor', secondary=tags, lazy='subquery',
+	comedores = db.relationship('Comedor', secondary=tags, lazy=True,
         backref=db.backref('comensales', lazy=True))
 
 	def __init__(self, nombre):
@@ -32,8 +32,8 @@ class Comedor(db.Model):
   
   	id = db.Column('id', db.Integer, primary_key = True, unique = True)
   	nombre = db.Column(db.String(100))
-  	comensales = db.relationship('Comensal', secondary=tags, lazy='subquery',
-        backref=db.backref('comedores', lazy=True))
+  	#comensales = db.relationship('Comensal', secondary=tags, lazy='subquery',
+        #backref=db.backref('comedores', lazy=True))
 
   	def __init__(self, nombre):
 
