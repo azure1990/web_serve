@@ -82,3 +82,6 @@ def nuevo_comensal():
 			#return request.form['nombre']
 	return render_template('crear_comensal.html')
 
+@app.route('/clientes/<int:comedor>')
+def clientes(comedor):
+	return render_template('clientes.html', comensales = Comensal.query.filter_by(comedor_id = comedor).all())
