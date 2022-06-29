@@ -28,7 +28,7 @@
             {% for comedor in comedores %}
                <tr>
                   <td>{{ comedor.nombre }}</td>
-                  <td><a href = "{{ url_for('clientes', comedor = comedor.id) }}">Clientes</a></td>
+                  <td><a href = "{{ url_for('clientes', comedorid = comedor.id) }}">Clientes</a></td>
                   <td><a href = "/clientes/{{comedor.id}}">Agregar cliente</a></td>                  
                </tr>
             {% endfor %}
