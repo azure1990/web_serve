@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head></head>
+   <body>
+      
+      <h3>
+         <a href = "{{ url_for('mostra_comedores') }}">Comedores y Comensales - Flask SQLAlchemy example</a>
+      </h3>
+      
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}<br>
+      {%- endfor %}
+		
+      <h3>Amos (<a href = "{{ url_for('nuevo_comedor') }}">Crear Comedor</a>)</h3> 
+    
+
+      <table>
+         <thead>
+            <tr>
+               <th>Nombre</th>          
+            </tr>
+         </thead>
+         
+         <tbody>
+            {% for comensal in comensales %}
+               <tr>
+                  <td>{{ comensal.nombre }}</td>
+                  <td><a href = "{{ url_for('favoritos', comensal = comensal.id) }}">Favoritos</a></td>
+                  <td><a href = "/favoritos/{{comensal.id}}">Agregar favorito</a></td>                  
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      
+   </body>
+</html>
