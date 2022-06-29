@@ -1,1 +1,27 @@
 
+
+
+
+<!DOCTYPE html>
+<html>
+   <body>
+   
+      <a href = "{{ url_for('favoritos') }}">comedores favoritos - Flask SQLAlchemy example</a>
+      <hr/>
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+      
+      <form action = "{{url_for('agrear_favorito', comensal = comensal.id)}}" method = "post">
+
+         <label for = "nombre">Nombre</label><br>
+         <input type = "text" name = "nombre" placeholder = "Nombre" /><br>
+                       
+        <input type = "submit" value = "Enviar" />
+      </form>
+      
+   </body>
+</html>
