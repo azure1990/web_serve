@@ -88,5 +88,5 @@ def clientes(comedor):
 			       
 
 @app.route('/favoritos/<int:comemsal>')
-def clientes(comensal):
+def favoritos(comensal):
 	return render_template('favoritos.html', comedores = Comensal.query.filter_by(comedor_id = comensal).comedores			       
