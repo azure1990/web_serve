@@ -47,7 +47,7 @@ class Comedor(db.Model):
 def mostrar_comedores():
   	return render_template('comedores.html', comedores = Comedor.query.all())
 
-@app.route('/')
+@app.route('/comensales')
 def mostrar_comensales():
   	return render_template('comensales.html', comensales = Comensal.query.all())
 
