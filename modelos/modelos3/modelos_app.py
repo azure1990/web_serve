@@ -90,3 +90,12 @@ def clientes(comedor):
 @app.route('/favoritos/<int:comemsal>')
 def favoritos(comensal):
 	return render_template('favoritos.html', comedores = Comensal.query.filter_by(comedor_id = comensal).comedores)
+
+
+@app.route('/agregar_cliente/<int:comedor>')
+def agregar_cliente(comedor):
+	return render_template('')
+
+@app.route('/agregar_favorito/<int:comensal>')
+def agregar_favorito(comensal):
+	return render_template('')
