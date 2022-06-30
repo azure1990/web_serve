@@ -13,10 +13,14 @@
       {%- endfor %}
       
       <form action = "{{url_for('agrear_cliente', comedor_id = comedor.id)}}" method = "post">
-
-         <label for = "nombre">Nombre</label><br>
-         <input type = "text" name = "nombre" placeholder = "Nombre" /><br>
-                       
+         <label for = "clientes">Clientes:</label><br>
+         <select name="clientes">
+            {% for comensal in comensales %}
+              <option value="{{comensal.id}}">{{comensal.nombre}}</option>
+            {% endfor %}         
+         </select>
+                   
+        
         <input type = "submit" value = "Enviar" />
       </form>
       
