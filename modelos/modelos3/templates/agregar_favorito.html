@@ -17,8 +17,12 @@
       
       <form action = "{{url_for('agrear_favorito', comensal_id = comensal.id)}}" method = "post">
 
-         <label for = "nombre">Nombre</label><br>
-         <input type = "text" name = "nombre" placeholder = "Nombre" /><br>
+         <label for = "comedores">Comedores:</label><br>
+         <select name="comedores">
+            {% for comedor in comedores %}
+              <option value="{{comedor.id}}">{{comedor.nombre}}</option>
+            {% endfor %}         
+         </select>
                        
         <input type = "submit" value = "Enviar" />
       </form>
