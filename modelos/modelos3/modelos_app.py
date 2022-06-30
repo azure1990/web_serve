@@ -67,7 +67,7 @@ def nuevo_comedor():
 			#return request.form['nombre']
 	return render_template('crear_comedor.html')
 
-@app.route('/nuevo_comedor', methods=['GET', 'POST'])
+@app.route('/nuevo_comensal', methods=['GET', 'POST'])
 def nuevo_comensal():
 	if request.method == 'POST':
 		if not request.form['nombre']:
