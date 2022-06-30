@@ -22,9 +22,8 @@ class Comensal(db.Model):
 
 	id = db.Column('id', db.Integer, primary_key = True)
 	nombre = db.Column(db.String(100))
-	comedores = db.relationship('Comedor', secondary=clientex, lazy=True,
-        backref=db.backref('comensales', lazy=True))
-
+	comedores = db.relationship('Comedor', secondary=clientex, lazy=True, backref=db.backref('comensales', lazy=True))
+	#otra forma es: comedores = db.relationship('Comedor', secondary=clientex, lazy=True, 'comensales')
 	def __init__(self, nombre):
 		self.nombre = nombre
 
