@@ -93,8 +93,33 @@ def favoritos(comensalid):
 
 @app.route('/agregar_cliente/<int:comedor_id>')
 def agregar_cliente(comedor_id):
-	return render_template('')
+	if request.method == 'POST':
+		if not request.form['client']:
+			flash('Por favor elija un cliente', 'error')
+		else:
+			comedor = Comedor.query.filter_by(id = comedor_id).first())
+			comensal = Comensal.query.filter_by(id = form['cliente']).first())
+			comedor.comensales.append(comensal)
+			db.session.commit(comedor)
+			flash('Cliente agregado')
+			return redirect(url_for('clientes', comedorid = comedor_id))  
+			#print(request.form['nombre'])
+			#return request.form['nombre']
+	return render_template('agregar_cliente.html',  comensales = Comensal.query.all())
+
 
 @app.route('/agregar_favorito/<int:comensal_id>')
 def agregar_favorito(comensal_id):
-	return render_template('')
+	if request.method == 'POST':
+		if not request.form['prefereti']:
+			flash('Por favor elija un comedor', 'error')
+		else:
+			comensal = Comensal.query.filter_by(id = comensal_id).first())
+			comedor = Comedor.query.filter_by(id = form['prefereti']).first())
+			comensal.comensales.append(comedor)
+			db.session.commit(comensal)
+			flash('Favorito agregado')
+			return redirect(url_for('favoritos', comensalid = comensal_id))  
+			#print(request.form['nombre'])
+			#return request.form['nombre']
+	return render_template('agregar_favorito.html', comedores = Comedor.query.all())
