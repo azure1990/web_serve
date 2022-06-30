@@ -28,13 +28,13 @@ class alumno(db.Model):
   apellido = db.Column(db.String(100)
   fecha_nacimiento = db.Column(db.Date)
   grado = db.Column(db.Integer, db.ForeignKey('curso.id'), nullable = False)
-  materias = db.relationship('materia', secondary=materia, lazy = 'subquery', bakckref=db.backref('alumnos', lazy=True))
+  materias = db.relationship('materia', secondary=notas, lazy = 'subquery', bakckref=db.backref('alumnos', lazy=True))
 
 class curso(db.Model):
                        
   id = db.Column('curso_id', db.Integer, primary_key= True)
   nombre = db.Column(db.String(100))
-  materias = db.relationship('materia', secondary=materia, lazy = 'subquery', bakckref=db.backref('cursos', lazy=True))
+  materias = db.relationship('materia', secondary=inscritos, lazy = 'subquery', bakckref=db.backref('cursos', lazy=True))
   alumnos = db.relationship('alumno', backref = 'curso', lazy = true)
   encargado = db.Column(db.Integer, db.ForeignKey('maestro.id'), nullable = False)
                        
@@ -43,8 +43,7 @@ class materia(db.Model):
   id = db.Column('materia_id', db.Integer, primary_key = True)
   nombre = db.Column(db.String(100))
   maestro = db.Column(db.Integer, db.ForeignKey('maestro.id'), nullable = False)
-  cursos = db.relationship('curso', secondary=materia, lazy = 'subquery', bakckref=db.backref('materias', lazy=True))
-  alumnos = db.relationship('alumno', secondary=materia, lazy = 'subquery', bakckref=db.backref('materias', lazy=True))
+  #cursos = db.relationship('curso', secondary=inscritos, lazy = 'subquery', bakckref=db.backref('materias', lazy=True))
 
                        
 class maestro(db.Model):
