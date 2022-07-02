@@ -10,29 +10,36 @@ cur_mat= db.Table('inscritos',
 alu_mat= db.Table('notas',
                   db.Column('alumno_id', db.Integer, db.ForeignKey('alumno.id'), primary_key = True)
                   db.Column('materia_id', db.Integer, db.ForeignKey('materia.id'), primary_key = True)
-                  db.Column('lab1', db.Integer),
-                  db.Column('lab2', db.Integer),
-                  db.Column('par1', db.Integer),
-                  db.Column('lab3', db.Integer),
-                  db.Column('lab4', db.Integer),
-                  db.Column('par2', db.Integer),
-                  db.Column('lab5', db.Integer),
-                  db.Column('lab6', db.Integer),
-                  db.Column('par3', db.Integer)
                  )
+
+class nota():
+  
+  id = db.Column('id', db.Integer, primary_keyy = True)
+  alumno_id = db.Column(db.Integer, db.ForeignKey('alumno.id'), nullable=False)
+  materia_id = db.Column(db.Integer, db.ForeignKey('materia.id'), nullable=False)
+  lab1 = db.Column('lab1', db.Integer)
+  lab2 = db.Column('lab2', db.Integer)
+  par1 = db.Column('par1', db.Integer)
+  lab3 = db.Column('lab3', db.Integer)
+  lab4 = db.Column('lab4', db.Integer)
+  par2 = db.Column('par2', db.Integer)
+  lab5 = db.Column('lab5', db.Integer)
+  lab6 = db.Column('lab6', db.Integer)
+  par3 = db.Column('par3', db.Integer)
 
 class alumno(db.Model):
   
-  id = db.Column('alumno_id', db.Integer, primary_key = True)
+  id = db.Column('id', db.Integer, primary_key = True)
   nombre = db.Column(db.String(100)
   apellido = db.Column(db.String(100)
   fecha_nacimiento = db.Column(db.Date)
   grado = db.Column(db.Integer, db.ForeignKey('curso.id'), nullable = False)
   materias = db.relationship('materia', secondary=notas, lazy = 'subquery', bakckref=db.backref('alumnos', lazy=True))
+  notas = db.relationship('Nota', backref='alumno', lazy=True)                      
 
 class curso(db.Model):
                        
-  id = db.Column('curso_id', db.Integer, primary_key= True)
+  id = db.Column('id', db.Integer, primary_key= True)
   nombre = db.Column(db.String(100))
   materias = db.relationship('materia', secondary=inscritos, lazy = 'subquery', bakckref=db.backref('cursos', lazy=True))
   alumnos = db.relationship('alumno', backref = 'curso', lazy = true)
@@ -40,15 +47,16 @@ class curso(db.Model):
                        
 class materia(db.Model):
                        
-  id = db.Column('materia_id', db.Integer, primary_key = True)
+  id = db.Column('id', db.Integer, primary_key = True)
   nombre = db.Column(db.String(100))
   maestro = db.Column(db.Integer, db.ForeignKey('maestro.id'), nullable = False)
   #cursos = db.relationship('curso', secondary=inscritos, lazy = 'subquery', bakckref=db.backref('materias', lazy=True))
+  notas = db.relationship('Nota', backref='materia', lazy=True)                      
 
                        
 class maestro(db.Model):
                        
-  id = db.Column('maestro_id', db.Integer, primary_key = True)
+  id = db.Column('id', db.Integer, primary_key = True)
   nombre = db.Column(db.String(100))
   apellido = db.Column(db.String(100))
   email = db.Column(db.String(150))
