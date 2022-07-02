@@ -56,7 +56,7 @@ class alumno(db.Model):
     self.apellido = apellido
     self.fecha_nacimiento = fecha_nacimiento
     self.grado = grado
-    self.materias = obtener segun grado y agregarlas con append. 
+    self.materias = obtener segun grado y agregarlas con append en un for loop
                        
 class curso(db.Model):
                        
