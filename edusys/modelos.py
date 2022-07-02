@@ -26,7 +26,21 @@ class nota():
   lab5 = db.Column('lab5', db.Integer)
   lab6 = db.Column('lab6', db.Integer)
   par3 = db.Column('par3', db.Integer)
-
+  
+  def __init__(self, alumno_id, materia_id, lab1 = 0, lab2 = 0, par1 = 0, lab3 = 0, lab4 = 0, par2 = 0, lab5 = 0, lab6 = 0, par3 = 0):
+		self.alumno_id = alumno_id
+    self.materia_id = materia_id
+    self.lab1 = lab1
+    self.lab2 = lab2
+    self.par1 = par1
+    self.lab3 = lab3
+    self.lab4 = lab4
+    self.par2 = par2
+    self.lab5 = lab5
+    self.lab6 = lab6
+    self.par3 = par3
+  
+    
 class alumno(db.Model):
   
   id = db.Column('id', db.Integer, primary_key = True)
@@ -36,7 +50,14 @@ class alumno(db.Model):
   grado = db.Column(db.Integer, db.ForeignKey('curso.id'), nullable = False)
   materias = db.relationship('materia', secondary=notas, lazy = 'subquery', bakckref=db.backref('alumnos', lazy=True))
   notas = db.relationship('Nota', backref='alumno', lazy=True)                      
-
+  
+  def __init__(self, nombre, apellido, fecha_nacimiento, grado):
+		self.nombre = nombre
+    self.apellido = apellido
+    self.fecha_nacimiento = fecha_nacimiento
+    self.grado = grado
+    self.materias = obtener segun grado y agregarlas con append. 
+                       
 class curso(db.Model):
                        
   id = db.Column('id', db.Integer, primary_key= True)
