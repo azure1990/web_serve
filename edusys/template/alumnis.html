@@ -1,4 +1,13 @@
-Alumnis
+
+<!DOCTYPE html>
+<html lang = "en">
+   <head></head>
+   <body>
+      
+      <h3>
+         <a href = "">Alumnos</a>
+      </h3>
+      Alumnis
 <a href="/alumni">Alumni</a>
 <a href="/alumnis">Alumnis</a>
 <a href="/course">Course</a>
@@ -16,3 +25,32 @@ Alumnis
 <a href="/professors">Professors</a>
 <a href="/subject">Subject</a>
 <a href="/subjects">Subjects</a>
+      
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}<br>
+      {%- endfor %}
+		
+      <h3>(<a href = "{{ url_for('view_new_alumni') }}">Agregar Alumno</a>)</h3>
+
+
+      <h3>{{b}}</h3>
+      <table>
+         <thead>
+            <tr>
+               <th>Name</th>            
+            </tr>
+         </thead>
+         
+         <tbody>
+            {% for alumni in alumnis %}
+               <tr>
+                  <td><a href="{{url_for('view_alumni', alumniid = alumni.id)}}">{{ alumni.nombre }}</a></td>
+                  <td>{{ alumni.apellido}}</td>                  
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      
+   </body>
+</html>
