@@ -183,14 +183,14 @@ def view_new_professor():
 
 #rutas materias************************************************
 
-@d_app.route('/subject')
-def view_subject():
-  return render_template('subject.html')
+@d_app.route('/subject/<int:materiaid>')
+def view_subject(materiaid):
+  return render_template('subject.html', mate = materia.query.filter_by(id = materiaid).first())
 
 
 @d_app.route('/subjects')
 def view_subjects():
-  return render_template('subjects.html')
+  return render_template('subjects.html', mates = materia.query.all())
 
 
 @d_app.route('/newsubject')
