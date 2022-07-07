@@ -16,3 +16,32 @@ Professors
 <a href="/professors">Professors</a>
 <a href="/subject">Subject</a>
 <a href="/subjects">Subjects</a>
+
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}<br>
+      {%- endfor %}
+		
+      <h3>(<a href = "{{ url_for('view_new_professor') }}">Agregar professor</a>)</h3>
+
+
+      <h3>{{b}}</h3>
+      <table>
+         <thead>
+            <tr>
+               <th>Name</th>            
+            </tr>
+         </thead>
+         
+         <tbody>
+            {% for profe in profes %}
+               <tr>
+                  <td><a href="{{url_for('view_professor', profeid = profe.id)}}">{{ profe.nombre }}</a></td>
+                  <td>{{ profe.apellido}}</td>                  
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      
+   </body>
+</html>
