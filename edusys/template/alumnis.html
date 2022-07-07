@@ -5,7 +5,7 @@
    <body>
       
       <h3>
-         <a href = "">Alumnos</a>
+         <a href = "">Profesores</a>
       </h3>
       Alumnis
 <a href="/alumni">Alumni</a>
@@ -31,7 +31,7 @@
          {{ message }}<br>
       {%- endfor %}
 		
-      <h3>(<a href = "{{ url_for('view_new_alumni') }}">Agregar Alumno</a>)</h3>
+      <h3>(<a href = "{{ url_for('view_new_profesor') }}">Agregar profesor</a>)</h3>
 
 
       <h3>{{b}}</h3>
@@ -43,10 +43,10 @@
          </thead>
          
          <tbody>
-            {% for alumni in alumnis %}
+            {% for profe in profes %}
                <tr>
-                  <td><a href="{{url_for('view_alumni', alumniid = alumni.id)}}">{{ alumni.nombre }}</a></td>
-                  <td>{{ alumni.apellido}}</td>                  
+                  <td><a href="{{url_for('view_professor', profeid = profe.id)}}">{{ profe.nombre }}</a></td>
+                  <td>{{ profe.apellido}}</td>                  
                </tr>
             {% endfor %}
          </tbody>
