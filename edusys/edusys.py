@@ -158,12 +158,12 @@ def view_new_alumni():
 
 @d_app.route('/professors')
 def view_professors():
-  return render_template('professors.html', profe = maestro.query.all())
+  return render_template('professors.html', profes = maestro.query.all())
 
 
-@d_app.route('/professor')
-def view_professor():
-  return render_template('professor.html')
+@d_app.route('/professor/<int:profeid>')
+def view_professor(profeid):
+  return render_template('professor.html', profe = maestro.query.filter_by(id = profeid).first())
 
 
 @d_app.route('/newprofessor')
