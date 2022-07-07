@@ -16,3 +16,41 @@ New Course
 <a href="/professors">Professors</a>
 <a href="/subject">Subject</a>
 <a href="/subjects">Subjects</a>
+
+<!DOCTYPE html>
+<html>
+   <body>
+   
+      <a href = "{{ url_for('view_index') }}">Index</a>
+      <hr/>
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+      
+      <form action = "{{ request.path }}" method = "post">
+         <label for = "nombre">Nombre: </label><br>
+         <input type = "text" name = "nombre" placeholder = "Nombre" /><br>
+     
+         <label for = "encargado">Encargado: </label><br>
+         <select name = "encargado">
+        {% for profe in profes%}
+        	<option value = "{{profe.id}}">{{profe.nombre}} {{profe.apellido}}</option>
+        {% endfor %}
+        </select>
+        <br>
+
+        
+        <label for = "materias">Materias: </label><br>
+        {% for mate in mates%}
+        	  <input type="checkbox" name="{{mate.nombre}}" value="{{mate.id}}">
+  			  <label for="{{mate.nombre}}">{{mate.nombre}} </label><br><br>
+        {% endfor %}
+
+        <input type = "submit" value = "Submit" />
+      </form>
+      
+   </body>
+</html>
