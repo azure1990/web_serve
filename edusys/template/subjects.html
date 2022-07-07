@@ -48,7 +48,7 @@ Subjects
             {% for mate in mates %}
                <tr>
                   <td><a href="{{url_for('view_subject', materiaid = mate.id)}}">{{ mate.nombre }}</a></td>
-                  <td>{{ mate.maestro_id.nombre}} {{ mate.maestro_id.apellido}}</td>                  
+                  <td>{{ mate.maestro.nombre}} {{ mate.maestro.apellido}}</td>                  
                </tr>
             {% endfor %}
          </tbody>
