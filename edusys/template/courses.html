@@ -16,3 +16,33 @@ Courses
 <a href="/professors">Professors</a>
 <a href="/subject">Subject</a>
 <a href="/subjects">Subjects</a>
+
+ <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}<br>
+      {%- endfor %}
+		
+      <h3>(<a href = "{{ url_for('view_new_course') }}">Agregar Curso</a>)</h3>
+
+
+      <h3>{{b}}</h3>
+      <table>
+         <thead>
+            <tr>
+               <th>Nombre</th>            
+               <th>Encargado</th>            
+            </tr>
+         </thead>
+         
+         <tbody>
+            {% for curso in cursos %}
+               <tr>
+                  <td><a href="{{url_for('view_course', cursoid = curso.id)}}">{{ curso.nombre }}</a></td>
+                  <td>{{ curso.maestro.nombre}} {{curso.maestro.apellido}}</td>                  
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      
+   </body>
+</html>
