@@ -166,10 +166,19 @@ def view_professor(profeid):
   return render_template('professor.html', profe = maestro.query.filter_by(id = profeid).first())
 
 
-@d_app.route('/newprofessor')
+@d_app.route('/newprofessor', methods = ['GET','POST'])
 def view_new_professor():
-  return render_template('create_professor.html')       
+  if request.method == 'POST':
+    if not request.form['nombre'] or not request.form['apellido'] or not request.form['email']:
+      flash('Por favor agregue todos los campos', 'error')
+    else:      
+      maestro_obj = maestro(request.form['nombre'],request.form['apellido'],request.form['email'])
+      db.session.add(maestro_obj)
+      db.session.commit()
+      flash('Maestro creado')      
+      return redirect('/')  
 
+  return render_template('create_professor.html')
 
 
 #rutas materias************************************************
@@ -194,18 +203,37 @@ def view_new_subject():
 
 @d_app.route('/courses')
 def view_courses():
-  return render_template('courses.html')
+  return render_template('courses.html', cursos = curso.query.all())
 
 
-@d_app.route('/course')
-def view_course():
-  return render_template('course.html')
+@d_app.route('/course/<int:cursoid>')
+def view_course(cursoid):
+  return render_template('course.html', curso = curso.query.filter_by(id= cursoid).first())
 
 
-@d_app.route('/newcourse')
+@d_app.route('/newcourse', methods = ['GET', 'POST'])
 def view_new_course():
-  return render_template('create_course.html')
+  if request.method == 'POST':
 
+    if not request.form['nombre'] or not request.form['encargado'] or len(request.form) < 3:
+      flash('Por favor agregue todos los campos', 'error')
+    else:
+      mats = []
+      for i, k in request.form.items():
+        if i != 'nombre' and i!='encargado':
+          mats.append(materia.query.filter_by(id = k).first()) 
+      
+      curso_obj = curso(request.form['nombre'],request.form['encargado'])
+      
+      for i in mats:
+        curso_obj.materias.append(i)
+      
+      db.session.add(curso_obj)
+      db.session.commit()
+      flash('Curso creado')      
+      return redirect('/')  
+
+  return render_template('create_course.html', mates = materia.query.all(), profes = maestro.query.all())
 
 
      
@@ -219,4 +247,3 @@ def view_login():
 @d_app.route('/logout')
 def view_logout():
   return render_template('logout.html')
-
