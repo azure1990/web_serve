@@ -75,7 +75,7 @@ class materia(db.Model):
   id = db.Column('id', db.Integer, primary_key = True)
   nombre = db.Column(db.String(100))
   maestro_id = db.Column(db.Integer, db.ForeignKey('maestro.id'), nullable = False)
-  #cursos = db.relationship('curso', secondary=inscritos, lazy = 'subquery', backref=db.backref('materias', lazy=True))
+  cursos = db.relationship('curso', secondary=inscritos, lazy = 'subquery', backref=db.backref('materias', lazy=True))
   notas = db.relationship('nota', backref='materia', lazy=True)                      
 
   def __init__(self, nombre, maestro):
