@@ -16,3 +16,32 @@ New Professor
 <a href="/professors">Professors</a>
 <a href="/subject">Subject</a>
 <a href="/subjects">Subjects</a>
+
+<!DOCTYPE html>
+<html>
+   <body>
+   
+      <a href = "{{ url_for('view_index') }}">Index</a>
+      <hr/>
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+      
+      <form action = "{{ request.path }}" method = "post">
+         <label for = "nombre">Nombre: </label><br>
+         <input type = "text" name = "nombre" placeholder = "Nombre" /><br>
+         
+        <label for = "apellido">Apellido: </label><br>
+         <input type = "text" name = "apellido" placeholder = "Apellido" /><br>
+        
+        <label for = "email">Email: </label><br>
+        <input type="email" name="email"><br>
+
+        <input type = "submit" value = "Submit" />
+      </form>
+      
+   </body>
+</html>
