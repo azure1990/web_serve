@@ -1,3 +1,12 @@
+
+<!DOCTYPE html>
+<html lang = "en">
+   <head></head>
+   <body>
+      
+      <h3>
+         <a href = "">Alumnos</a>
+      </h3>
 Subjects
 <a href="/alumni">Alumni</a>
 <a href="/alumnis">Alumnis</a>
@@ -16,3 +25,35 @@ Subjects
 <a href="/professors">Professors</a>
 <a href="/subject">Subject</a>
 <a href="/subjects">Subjects</a>
+
+      
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}<br>
+      {%- endfor %}
+		
+      <h3>(<a href = "{{ url_for('view_new_subject') }}">Agregar Materia</a>)</h3>
+
+
+      <h3>{{b}}</h3>
+      <table>
+         <thead>
+            <tr>
+               <th>Nombre</th>
+               <th>Profesor</th>
+              
+            </tr>
+         </thead>
+         
+         <tbody>
+            {% for mate in mates %}
+               <tr>
+                  <td><a href="{{url_for('view_subject', materiaid = mate.id)}}">{{ mate.nombre }}</a></td>
+                  <td>{{ mate.maestro.nombre}} {{ mate.maestro.apellido}}</td>                  
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      
+   </body>
+</html>
