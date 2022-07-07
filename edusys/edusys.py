@@ -43,6 +43,20 @@ class alumno(db.Model):
     self.apellido = apellido
     self.fecha_nacimiento = fecha_nacimiento
     self.grado = grado
+    
+class maestro(db.Model):
+                       
+  id = db.Column('id', db.Integer, primary_key = True)
+  nombre = db.Column(db.String(100))
+  apellido = db.Column(db.String(100))
+  email = db.Column(db.String(150))
+  encargado_cursos = db.relationship('curso', backref = 'maestro', lazy = True)
+  materias = db.relationship('materia', backref = 'maestro', lazy = True)
+  
+  def __init__(self, nombre, apellido, email):
+    self.nombre = nombre
+    self.apellido = apellido
+    self.email = email
                        
 class curso(db.Model):
 
@@ -68,19 +82,7 @@ class materia(db.Model):
     self.nombre = nombre
     self.maestro = maestro
                        
-class maestro(db.Model):
-                       
-  id = db.Column('id', db.Integer, primary_key = True)
-  nombre = db.Column(db.String(100))
-  apellido = db.Column(db.String(100))
-  email = db.Column(db.String(150))
-  encargado_cursos = db.relationship('curso', backref = 'maestro', lazy = True)
-  materias = db.relationship('materia', backref = 'maestro', lazy = True)
-  
-  def __init__(self, nombre, apellido, email):
-    self.nombre = nombre
-    self.apellido = apellido
-    self.email = email
+
 
 class nota(db.Model):
   
@@ -156,7 +158,7 @@ def view_new_alumni():
 
 @d_app.route('/professors')
 def view_professors():
-  return render_template('professors.html')
+  return render_template('professors.html', profe = maestro.query.all())
 
 
 @d_app.route('/professor')
