@@ -145,8 +145,18 @@ def view_new_alumni():
       flash('Por favor agregue todos los campos', 'error')
     else:      
       alumno_obj = alumno(request.form['nombre'],request.form['apellido'], date.fromisoformat(request.form['fecha']), request.form['grado'])
+      cur = curso.query.filter_by(id = request.form['grado'])
+      for i in cur.materias:
+        alumno_obj.materias.append(i)
+        
+   
+        
       db.session.add(alumno_obj)
+      for k in alumno_obj.materias: 
+        n = nota(alumno_id=alumno_obj.id, materia_id=k.id)
+        db.session.add(k)
       db.session.commit()
+      
       flash('Alumno creado')      
       return redirect('/')  
 
