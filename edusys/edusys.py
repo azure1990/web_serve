@@ -18,12 +18,13 @@ inscritos= db.Table('inscritos',
                   db.Column('materia_id', db.Integer, db.ForeignKey('materia.id'), primary_key = True),
                   db.Column('curso_id', db.Integer, db.ForeignKey('curso.id'), primary_key = True)
                  )
+"""
 
-lista= db.Table('lista',
+= db.Table('lista',
                   db.Column('alumno_id', db.Integer, db.ForeignKey('alumno.id'), primary_key = True),
                   db.Column('materia_id', db.Integer, db.ForeignKey('materia.id'), primary_key = True)
                  )
-
+"""
 #modelos
 
 
@@ -35,7 +36,7 @@ class alumno(db.Model):
   apellido = db.Column(db.String(100))
   fecha_nacimiento = db.Column(db.Date)
   grado = db.Column(db.Integer, db.ForeignKey('curso.id'), nullable = False)
-  materias = db.relationship('materia', secondary=lista, lazy = 'subquery', backref=db.backref('alumnos', lazy=True))
+  #materias = db.relationship('materia', secondary=lista, lazy = 'subquery', backref=db.backref('alumnos', lazy=True))
   notas = db.relationship('nota', backref='alumno', lazy=True)                      
   
   def __init__(self, nombre, apellido, fecha_nacimiento, grado):
