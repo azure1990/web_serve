@@ -1,4 +1,10 @@
-New Subject
+
+
+<!DOCTYPE html>
+<html>
+   <body>
+      
+      New Subject
 <a href="/alumni">Alumni</a>
 <a href="/alumnis">Alumnis</a>
 <a href="/course">Course</a>
@@ -16,10 +22,6 @@ New Subject
 <a href="/professors">Professors</a>
 <a href="/subject">Subject</a>
 <a href="/subjects">Subjects</a>
-
-<!DOCTYPE html>
-<html>
-   <body>
    
       <a href = "{{ url_for('view_index') }}">Index</a>
       <hr/>
@@ -34,16 +36,11 @@ New Subject
          <label for = "nombre">Nombre: </label><br>
          <input type = "text" name = "nombre" placeholder = "Nombre" /><br>
          
-        <label for = "apellido">Apellido: </label><br>
-         <input type = "text" name = "apellido" placeholder = "Apellido" /><br>
-        
-        <label for = "fecha">Fecha de nacimiento: </label><br>
-        <input type="date" name="fecha"><br>
 
-        <label for ="grado">Grado: </label>
-        <select name="grado">
-        	{%for grado in grados%}
-        		<option value = "{{grado.id}}" >{{grado.nombre}}</option>
+        <label for ="maestro">Maestro: </label>
+        <select name="maestro">
+        	{%for profe in profes%}
+        		<option value = "{{profe.id}}" >{{profe.nombre}} {{profe.apellido}}</option>
         	{%endfor%}	
 
 
