@@ -250,6 +250,26 @@ def view_new_course():
 
   return render_template('create_course.html', mates = materia.query.all(), profes = maestro.query.all())
 
+#Rutas add notes**********************************************
+
+@d_app.route('/materias/<int:maestroid>')
+def view_notas(maestroid):
+  
+  mates = materia.query.filter_by(maestro_id=maestroid)
+  
+  return render_template('notas.html', mates)
+  
+@d_app.route('/materias/notas/<int:materiaid>/<:gradoid>')
+def view_set_notas(materiaid, gradoid):
+  alums = curso.query.filter_by(id = gradoid).first().alumnos
+  lista = []
+  
+  for alum in alumns:
+    a = nota.query.filter(nota.alumno_id == alum.id, nota.materia_id == maeriaid)
+    if (a != None):
+      lista.append(a)
+      
+  return render_template('set_notas.html', lista)
 
      
 #rutas login/logout ************************************************
