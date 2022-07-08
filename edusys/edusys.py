@@ -193,9 +193,19 @@ def view_subjects():
   return render_template('subjects.html', mates = materia.query.all())
 
 
-@d_app.route('/newsubject')
+@d_app.route('/newsubject', methods = ['GET','POST'])
 def view_new_subject():
-  return render_template('create_subject.html')
+  if request.method == 'POST':
+    if not request.form['nombre'] or not request.form['maestro']:
+      flash('Por favor agregue todos los campos', 'error')
+    else:      
+      materia_obj = materia(request.form['nombre'],request.form['maestro'])
+      db.session.add(materia_obj)
+      db.session.commit()
+      flash('Materia creada')      
+      return redirect('/')  
+    
+  return render_template('create_subject.html', profes = maestro.query.all())
 
 
 
