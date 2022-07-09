@@ -247,8 +247,8 @@ def view_new_course():
       db.session.commit()
       flash('Curso creado')      
       return redirect('/')  
-
-  return render_template('create_course.html', mates = materia.query.all(), profes = maestro.query.all())
+  else:
+    return render_template('create_course.html', mates = materia.query.all(), profes = maestro.query.all())
 
 #Rutas add notes**********************************************
 
@@ -271,6 +271,20 @@ def view_set_notas(materiaid, gradoid):
       
   return render_template('lista_notas.html', lista)
 
+@d_app.route('/notas/<int:notaid>', methods = ['GET','POST'])
+def view_actualizar_notas(notaid):  
+  if request.method == "POST":
+    n = nota.query.filter_by(id=notaid)
+    n.lab1 = request.form['lab1']
+    n.lab2 = request.form['lab2']
+    n.par1 = request.form['par1']
+    db.session.add(n)
+    db.session.commit(n)
+    flash('Curso creado')
+    return redirect('',materiaid=n.materia.id,gradoid=n.alumno.curso)
+  else:
+    return render_template('actualizar_notas.html', n = nota.query.filter_by(id = notaid))
+  
      
 #rutas login/logout ************************************************
 
