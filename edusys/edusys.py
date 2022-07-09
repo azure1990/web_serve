@@ -269,7 +269,7 @@ def view_set_notas(materiaid, gradoid):
     if (a != None):
       lista.append(a)
       
-  return render_template('set_notas.html', lista)
+  return render_template('lista_notas.html', lista)
 
      
 #rutas login/logout ************************************************
