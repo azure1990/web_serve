@@ -281,7 +281,7 @@ def view_actualizar_notas(notaid):
     db.session.add(n)
     db.session.commit(n)
     flash('Curso creado')
-    return redirect(url_for('view_set_notas'),materiaid=n.materia.id,gradoid=n.alumno.curso)
+    return redirect(url_for('view_set_notas', materiaid=n.materia.id, gradoid=n.alumno.curso))
   else:
     return render_template('actualizar_notas.html', n = nota.query.filter_by(id = notaid))
   
