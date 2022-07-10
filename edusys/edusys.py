@@ -81,7 +81,7 @@ class materia(db.Model):
 
   def __init__(self, nombre, maestro):
     self.nombre = nombre
-    self.maestro = maestro
+    self.maestro_id = maestro
                        
 
 
@@ -157,6 +157,9 @@ def view_new_alumni():
 
   return render_template('create_alumni.html', grados = curso.query.all())
 
+@d_app.route('/update/alumno/<int:alumniid>', methods=['GET','POST'])
+def view_update_alumno(alumniid):
+
 
 
 #rutas maestros************************************************
@@ -185,7 +188,23 @@ def view_new_professor():
 
   return render_template('create_professor.html')
 
-
+@d_app.route('/update/professor/<int:maestroid>', methods=['GET','POST'])
+def view_update_professor(maestroid):
+  if request.method == 'POST':
+    if not request.form['nombre'] or not request.form['apellido'] or not request.form['email']:
+      flash('Por favor llene todos los campos','error')
+    else:
+      profe = maestro.query.filter_by(id=maestroid)
+      profe.nombre = request.form['nombre']
+      profe.apellido = request.form['apellido']
+      profe.email = request.form['email']
+      db.session.add(profe)
+      db.session.commit()
+      flash("Profesor actualizado")
+      return redirect('/')
+    
+  return render_template('update_maestro.html', profe = maestro.query.filter_by(id=maestroid))
+  
 #rutas materias************************************************
 
 @d_app.route('/subject/<int:materiaid>')
@@ -274,14 +293,17 @@ def view_set_notas(materiaid, gradoid):
 @d_app.route('/notas/<int:notaid>', methods = ['GET','POST'])
 def view_actualizar_notas(notaid):  
   if request.method == "POST":
-    n = nota.query.filter_by(id=notaid)
-    n.lab1 = request.form['lab1']
-    n.lab2 = request.form['lab2']
-    n.par1 = request.form['par1']
-    db.session.add(n)
-    db.session.commit(n)
-    flash('Curso creado')
-    return redirect(url_for('view_set_notas', materiaid=n.materia.id, gradoid=n.alumno.curso))
+    if not request.form['lab1'] or not request.form['lab2'] or not request.form['par1']:
+      flash('Por favor llene todos los campos','error')
+    else:      
+      n = nota.query.filter_by(id=notaid)
+      n.lab1 = request.form['lab1']
+      n.lab2 = request.form['lab2']
+      n.par1 = request.form['par1']
+      db.session.add(n)
+      db.session.commit(n)
+      flash('Curso creado')
+      return redirect(url_for('view_set_notas', materiaid=n.materia.id, gradoid=n.alumno.curso))
   else:
     return render_template('actualizar_notas.html', n = nota.query.filter_by(id = notaid))
   
